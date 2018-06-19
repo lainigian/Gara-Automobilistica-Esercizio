@@ -42,29 +42,32 @@ public class MainClass {
 			g1.aggiungiPartecipante(p4);
 			g1.aggiungiPartecipante(p5);
 			
-			//verifico se superando i 100 posti si genera l'eccezione EccezionePostoEsauriti
-			for (int i = 5; i < 100; i++) 
-			{
-				g1.aggiungiPartecipante(p1);
-			}
 		} 
 		catch (EccezionePostiEsauriti e) 
 		{
 			System.out.println(e.toString());
 		}
 		
-		System.out.println(g1.toString());
+		
 	
-		//debug getPartecipante
+		//debug eliminaPartecipante
 		try 
 		{
-			System.out.println(g1.getPartecipante(3));
-			System.out.println(g1.getPartecipante(10));
+			g1.eliminaPartecipante(3);
+			g1.eliminaPartecipante(5);
+			g1.aggiungiPartecipante(p1);
+			g1.eliminaPartecipante(10);
+			
 		} 
 		catch (EccezionePartecipanteNonPresente e) 
 		{
 			System.out.println(e.toString());
+		} 
+		catch (EccezionePostiEsauriti e) 
+		{
+			System.out.println(e.toString());
 		}
+		System.out.println(g1.toString());
 		
 	}
 

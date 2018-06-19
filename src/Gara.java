@@ -48,6 +48,27 @@ public class Gara
 		throw new EccezionePartecipanteNonPresente("Il partecipante con codice "+codice+" non è presente nell'elenco");		
 	}
 	
+	
+	//Elimia il partecipante con il codice specificato.
+	//Se il partecipante non è presente nell'elenco viene sollevata una eccezione del tipo EccezionePartecipanteNonPresente
+	public void eliminaPartecipante(int codice) throws EccezionePartecipanteNonPresente
+	{
+		Partecipante p=null;
+		for (int i = 0; i < NUM_MAX_PARTECIPANTI; i++) 
+		{
+			if (elencoPartecipanti[i]!=null)
+			{
+				if (elencoPartecipanti[i].getCodice()==codice)
+				{
+					elencoPartecipanti[i]=null;	//eliminazione del partecipante
+					return;
+				}
+			}
+		}
+		
+		throw new EccezionePartecipanteNonPresente("Il partecipante con codice "+codice+" non è presente nell'elenco");		
+	}
+	
 	// Crea una stringa contenente tutti i partecipanti inseriti
 	public String toString()
 	{
