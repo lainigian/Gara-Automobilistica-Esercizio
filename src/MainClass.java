@@ -22,32 +22,39 @@ public class MainClass {
 			System.out.println(e.toString());
 		}
 	
-		
-/*		System.out.println(t1.compareTo(t2));
-		System.out.println(t2.compareTo(t1));
-		System.out.println(t2.compareTo(t2));
-		System.out.println(t1.toString());
-		System.out.println(t2.toString());
-		System.out.println(t3.toString());
-		System.out.println(t4.toString());
-		System.out.println(t5.toString());
-*/
-//---------------------Test partecipante------------------------------
+
+//---------------------Debug partecipante------------------------------
 		Partecipante p1=new Partecipante(1,"Bruno", "Fiat", "Punto", t1);
 		Partecipante p2=new Partecipante(2,"Antonio", "Renault", "Clio", t2);
 		Partecipante p3=new Partecipante(3,"Liccio", "Fiat", "128", t3);
-		Partecipante p4=new Partecipante(3,"Siani", "Peugeut", "205", t4);
+		Partecipante p4=new Partecipante(4,"Siani", "Peugeut", "205", t4);
 		Partecipante p5=new Partecipante(5,"Lillo", "Fiat", "Fiorino", t5);
-		Partecipante p6=new Partecipante(p5);
+	
 		
+//----------------------Debug gara------------------------------------------
 		
+		Gara g1=new Gara();
+		try 
+		{
+			g1.aggiungiPartecipante(p1);
+			g1.aggiungiPartecipante(p2);
+			g1.aggiungiPartecipante(p3);
+			g1.aggiungiPartecipante(p4);
+			g1.aggiungiPartecipante(p5);
+			
+			//verifico se superando i 100 posti si genera l'eccezione EccezionePostoEsauriti
+			for (int i = 5; i < 100; i++) 
+			{
+				g1.aggiungiPartecipante(p1);
+			}
+		} 
+		catch (EccezionePostiEsauriti e) 
+		{
+			System.out.println(e.toString());
+		}
+
 		
-		System.out.println(p1.toString());
-		System.out.println(p2.toString());
-		System.out.println(p3.toString());
-		System.out.println(p4.toString());		
-		System.out.println(p5.toString());
-		System.out.println(p6.toString());
+		System.out.println(g1.toString());
 	
 	}
 
