@@ -48,30 +48,18 @@ public class MainClass {
 			System.out.println(e.toString());
 		}
 		
-		
 	
-		//debug eliminaPartecipante
-	/*	try 
+		//debug classifica
+		Partecipante[] elencoAlfabetico;
+		elencoAlfabetico=g1.ordineAlfabetico();
+		for (int i = 0; i < elencoAlfabetico.length; i++) 
 		{
-			g1.eliminaPartecipante(3);
-			g1.eliminaPartecipante(5);
-			g1.aggiungiPartecipante(p1);
-			g1.eliminaPartecipante(10);
-			
-		} 
-		catch (EccezionePartecipanteNonPresente e) 
-		{
-			System.out.println(e.toString());
-		} 
-		catch (EccezionePostiEsauriti e) 
-		{
-			System.out.println(e.toString());
+			System.out.println(elencoAlfabetico[i].toString());
 		}
 		
-	*/
 		
-		System.out.println(g1.elencoPartecipantiAuto("Fiat"));
-		System.out.println(g1.toString());
+	
+		
 		
 	}
 

@@ -104,4 +104,69 @@ public class Gara
 		return risultato;
 	}
 	
+	
+	/**
+	 * Metodo privato che scambia fra loro due interi di un'array di interi
+	 * @param array	Array su cui effettuare lo scambio
+	 * @param pos1	posizione del primo elemento da scambiare
+	 * @param pos2	posizione del secondo elemento da scambiare
+	 */
+	private static void scambia (Partecipante[] array, int pos1, int pos2)
+	{
+		Partecipante s=array[pos1];
+		array[pos1]=array[pos2];
+		array[pos2]=s;
+	}
+	
+	/**
+	 * Metodo  che ordina una array di Partecipante in ordine alfabetico in base al nome (A-Z) utilizzando l'algoritmo 
+	 * Selection Sort. L'algoritmo non è Case sansitive, quindi ordina indipndentemente dal fatto che una nome
+	 * contenga lettere minuscole o maiuscole.
+	 * @param array Array di Partecipante da ordinare
+	 * @return Altro array di Partecipante con i valori ordinati alfabeticamente (A-Z)
+	 */
+	public  Partecipante[] ordineAlfabetico()
+	{
+		
+		//creo una array di partecipanti, chiamata risultato, in cui siano presenti tutti i partecipanti
+		//senza "posti vuoti". Poi ordinerò l'array risultato
+		
+		int c=0; //contatore per costruire l'array da ordinare
+		int numeroPartecipanti=numeroPartecipanti();  //numeroPartecipanti è un metodo che "conta" quanti partecipanti sono presenti nell'elenco
+		Partecipante[] risultato=new Partecipante[numeroPartecipanti]; 
+		
+		for (int i = 0; i < NUM_MAX_PARTECIPANTI; i++) 
+		{
+			if (elencoPartecipanti[i]!=null)
+			{
+				risultato[c]=new Partecipante(elencoPartecipanti[i]);
+				c++;
+			}		
+		}
+		
+		for (int i = 0; i < risultato.length-1; i++) 
+		{
+			for (int j = i+1; j < risultato.length; j++) 
+			{
+				if (risultato[i].getNome().compareToIgnoreCase(risultato[j].getNome())>0)
+					scambia(risultato,i,j);
+			}
+		}
+		return risultato;
+	}
+	
+	
+	//Restituisce il numero di partecipanti presenti nell'elenco
+	public int numeroPartecipanti()
+	{
+		int contatore=0;
+		for (int i = 0; i < NUM_MAX_PARTECIPANTI; i++) 
+		{
+			if (elencoPartecipanti[i]!=null)
+				contatore++;
+		}
+		return contatore;
+	}
+	
+	
 }
