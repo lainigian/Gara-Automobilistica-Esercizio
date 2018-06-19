@@ -51,7 +51,7 @@ public class MainClass {
 		
 	
 		//debug eliminaPartecipante
-		try 
+	/*	try 
 		{
 			g1.eliminaPartecipante(3);
 			g1.eliminaPartecipante(5);
@@ -67,6 +67,10 @@ public class MainClass {
 		{
 			System.out.println(e.toString());
 		}
+		
+	*/
+		
+		System.out.println(g1.elencoPartecipantiAuto("Fiat"));
 		System.out.println(g1.toString());
 		
 	}
