@@ -32,7 +32,7 @@ public class MainClass {
 	
 		
 //----------------------Debug gara------------------------------------------
-		
+		//debug aggiungiPartecipante
 		Gara g1=new Gara();
 		try 
 		{
@@ -52,10 +52,20 @@ public class MainClass {
 		{
 			System.out.println(e.toString());
 		}
-
 		
 		System.out.println(g1.toString());
 	
+		//debug getPartecipante
+		try 
+		{
+			System.out.println(g1.getPartecipante(3));
+			System.out.println(g1.getPartecipante(10));
+		} 
+		catch (EccezionePartecipanteNonPresente e) 
+		{
+			System.out.println(e.toString());
+		}
+		
 	}
 
 }
