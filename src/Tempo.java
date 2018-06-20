@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Tempo 
+public class Tempo implements Serializable
 {
 //Attributi
 	private int ore;

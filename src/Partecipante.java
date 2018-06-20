@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Partecipante 
+public class Partecipante implements Serializable
 {
 	//Attributi
 	private int codice;

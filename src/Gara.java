@@ -1,6 +1,11 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class Gara 
+public class Gara implements Serializable
 {
 	//Attributi
 	private Partecipante[] elencoPartecipanti;
@@ -209,6 +214,40 @@ public class Gara
 		filePartecipanti.closeFile();
 	}
 	
+	//metodo per la serializzazione dei dati di una istanza della classe Gara
+	//si ricorda che per serializzare i dati è necessario che le classi Gara, Partecipante e Tempo
+	//implementino l'interfaccia Serializable
+	public void salvaGara(String nomeFile) throws IOException
+	{
+		FileOutputStream f1=new FileOutputStream(nomeFile);
+		ObjectOutputStream outputStream=new ObjectOutputStream(f1);
+		
+		outputStream.writeObject(this);
+		outputStream.flush();
+		outputStream.close();
+	}
+	
+	//metodo per la deserializzazione dei una istanza di classe Gara precedentemente serializzata
+	public Gara caricaGara(String nomeFile) throws IOException
+	{
+		FileInputStream f1= new FileInputStream(nomeFile);
+		ObjectInputStream inputStream= new ObjectInputStream(f1);
+		
+		Gara gara=null;
+		
+		try 
+		{
+			gara=(Gara)inputStream.readObject();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		inputStream.close();
+		return gara;
+	}
 	
 	// Crea una stringa contenente tutti i partecipanti inseriti
 	public String toString()

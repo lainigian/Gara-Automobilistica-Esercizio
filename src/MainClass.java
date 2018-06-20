@@ -51,7 +51,7 @@ public class MainClass {
 		
 	
 		//debug ordine Alfabetico
-		Partecipante[] elencoAlfabetico;
+/*		Partecipante[] elencoAlfabetico;
 		elencoAlfabetico=g1.ordineAlfabetico();
 		for (int i = 0; i < elencoAlfabetico.length; i++) 
 		{
@@ -65,7 +65,7 @@ public class MainClass {
 		{
 			System.out.println(elencoClassifica[i].toString());
 		}
-		
+*/		
 		//Debug stampa su file
 		try 
 		{
@@ -80,6 +80,37 @@ public class MainClass {
 		{
 			System.out.println(e.toString());
 		}
+		
+		//Debug serializzazione/deserializzazione
+		
+		try
+		{
+			g1.salvaGara("Gara.bin");
+		} catch (IOException e) 
+		{
+			System.out.println("Impossibile salvare sul file Gara.bin");
+		}
+		
+		Gara g2=new Gara();
+		try 
+		{
+			g2=g2.caricaGara("Gara.bin");
+		} 
+		catch (IOException e) 
+		{
+			System.out.println("Impossibile caricare i dati dal file Gara.bin");
+		}
+		
+		System.out.println(g2.toString());
+		
+		
+		
 	}
 
 }
+
+
+
+
+
+
