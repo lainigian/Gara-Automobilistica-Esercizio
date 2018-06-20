@@ -106,7 +106,7 @@ public class Gara
 	
 	
 	/**
-	 * Metodo privato che scambia fra loro due interi di un'array di interi
+	 * Metodo privato che scambia fra loro due interi di un'array di oggetti della classe Partecipante
 	 * @param array	Array su cui effettuare lo scambio
 	 * @param pos1	posizione del primo elemento da scambiare
 	 * @param pos2	posizione del secondo elemento da scambiare
@@ -122,7 +122,6 @@ public class Gara
 	 * Metodo  che ordina una array di Partecipante in ordine alfabetico in base al nome (A-Z) utilizzando l'algoritmo 
 	 * Selection Sort. L'algoritmo non è Case sansitive, quindi ordina indipndentemente dal fatto che una nome
 	 * contenga lettere minuscole o maiuscole.
-	 * @param array Array di Partecipante da ordinare
 	 * @return Altro array di Partecipante con i valori ordinati alfabeticamente (A-Z)
 	 */
 	public  Partecipante[] ordineAlfabetico()
@@ -149,6 +148,41 @@ public class Gara
 			for (int j = i+1; j < risultato.length; j++) 
 			{
 				if (risultato[i].getNome().compareToIgnoreCase(risultato[j].getNome())>0)
+					scambia(risultato,i,j);
+			}
+		}
+		return risultato;
+	}
+	
+	/**
+	 * Metodo  che ordina una array di Partecipante in ordine crescente in base al tempo impiegato utilizzando l'algoritmo 
+	 * Selection Sort.
+	 * @return Altro array di Partecipante con i valori ordinati alfabeticamente (A-Z)
+	 */
+	public  Partecipante[] ordineTempoCrescente()
+	{
+		
+		//creo una array di partecipanti, chiamata risultato, in cui siano presenti tutti i partecipanti
+		//senza "posti vuoti". Poi ordinerò l'array risultato
+		
+		int c=0; //contatore per costruire l'array da ordinare
+		int numeroPartecipanti=numeroPartecipanti();  //numeroPartecipanti è un metodo che "conta" quanti partecipanti sono presenti nell'elenco
+		Partecipante[] risultato=new Partecipante[numeroPartecipanti]; 
+		
+		for (int i = 0; i < NUM_MAX_PARTECIPANTI; i++) 
+		{
+			if (elencoPartecipanti[i]!=null)
+			{
+				risultato[c]=new Partecipante(elencoPartecipanti[i]);
+				c++;
+			}		
+		}
+		
+		for (int i = 0; i < risultato.length-1; i++) 
+		{
+			for (int j = i+1; j < risultato.length; j++) 
+			{
+				if (risultato[i].getTempoImpiegato().compareTo(risultato[j].getTempoImpiegato())<0)
 					scambia(risultato,i,j);
 			}
 		}

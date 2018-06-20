@@ -49,7 +49,7 @@ public class MainClass {
 		}
 		
 	
-		//debug classifica
+		//debug ordine Alfabetico
 		Partecipante[] elencoAlfabetico;
 		elencoAlfabetico=g1.ordineAlfabetico();
 		for (int i = 0; i < elencoAlfabetico.length; i++) 
@@ -57,8 +57,13 @@ public class MainClass {
 			System.out.println(elencoAlfabetico[i].toString());
 		}
 		
-		
-	
+		//debug classifica
+		Partecipante[] elencoClassifica;
+		elencoClassifica=g1.ordineTempoCrescente();
+		for (int i = 0; i < elencoAlfabetico.length; i++) 
+		{
+			System.out.println(elencoClassifica[i].toString());
+		}
 		
 		
 	}
