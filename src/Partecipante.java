@@ -86,10 +86,16 @@ public class Partecipante
 		}
 	}
 	
+	public void stampaSuFileOrdineAlfabetico()
+	{
+		
+	}
+	
 	public String toString()
 	{
 		return (getCodice()+" "+getNome()+" "+getMarca()+" "+getModello()+" Tempo:"+getTempoImpiegato().toString());
 	}
 	
+
 	
 }

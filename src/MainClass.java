@@ -1,3 +1,4 @@
+import java.io.IOException;
 
 public class MainClass {
 
@@ -65,7 +66,20 @@ public class MainClass {
 			System.out.println(elencoClassifica[i].toString());
 		}
 		
-		
+		//Debug stampa su file
+		try 
+		{
+			g1.stampaSuFile("ElencoPartecipanti.txt");
+		}
+		catch (IOException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		catch (EccezioneFile e) 
+		{
+			System.out.println(e.toString());
+		}
 	}
 
 }

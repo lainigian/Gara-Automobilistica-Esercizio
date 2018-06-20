@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 public class Gara 
 {
 	//Attributi
@@ -87,20 +89,6 @@ public class Gara
 		}
 		if (risultato.compareTo("")==0)
 			risultato="Nessun partecipante con auto "+marca;
-		return risultato;
-	}
-	
-	// Crea una stringa contenente tutti i partecipanti inseriti
-	public String toString()
-	{
-		String risultato="";
-		for (int i = 0; i < NUM_MAX_PARTECIPANTI; i++) 
-		{
-			if (elencoPartecipanti[i]!=null)
-			{
-				risultato+=elencoPartecipanti[i].toString()+"\n";
-			}
-		}
 		return risultato;
 	}
 	
@@ -202,5 +190,38 @@ public class Gara
 		return contatore;
 	}
 	
+	
+	//metodo che stampa su file i partecipanti in ordine alfabetico
+	public void stampaSuFile(String nomefile) throws IOException, EccezioneFile
+	{
+		String stringaPartecipante;
+		TextFile filePartecipanti= new TextFile(nomefile, 'W');
+		Partecipante[] elencoAlfabetico;
+		elencoAlfabetico=ordineAlfabetico();
+		for (int i = 0; i < elencoAlfabetico.length; i++) 
+		{
+			stringaPartecipante=elencoAlfabetico[i].getNome()+" codice: "+elencoAlfabetico[i].getCodice();
+			filePartecipanti.toFile(stringaPartecipante);
+		}
+		
+		if (elencoAlfabetico.length==0)
+			filePartecipanti.toFile("Nessun partecipante presente");
+		filePartecipanti.closeFile();
+	}
+	
+	
+	// Crea una stringa contenente tutti i partecipanti inseriti
+	public String toString()
+	{
+		String risultato="";
+		for (int i = 0; i < NUM_MAX_PARTECIPANTI; i++) 
+		{
+			if (elencoPartecipanti[i]!=null)
+			{
+				risultato+=elencoPartecipanti[i].toString()+"\n";
+			}
+		}
+		return risultato;
+	}
 	
 }
